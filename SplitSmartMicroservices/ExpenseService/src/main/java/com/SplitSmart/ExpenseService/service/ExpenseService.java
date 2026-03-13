@@ -5,6 +5,7 @@ import com.SplitSmart.ExpenseService.entity.ExpenseParticipant;
 import com.SplitSmart.ExpenseService.entity.ExpenseStatus;
 import com.SplitSmart.ExpenseService.repository.ExpenseParticipantRepository;
 import com.SplitSmart.ExpenseService.repository.ExpenseRepository;
+import com.SplitSmart.ExpenseService.service.AuditLogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ public class ExpenseService {
     private final com.SplitSmart.ExpenseService.client.BalanceClient balanceClient;
     private final com.SplitSmart.ExpenseService.client.FraudClient fraudClient;
     private final KafkaProducerService kafkaProducer;
+    private final AuditLogService auditLogService;
 
     @Transactional
     public Expense createExpense(Expense expense, List<ExpenseParticipant> participants) {
